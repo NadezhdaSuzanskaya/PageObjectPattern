@@ -16,4 +16,11 @@ public class ProductTest extends LoginTest {
         Assert.assertTrue(cartPage.findProductInCard(TEST_PRODUCT_TITLE), "Selected product is not in the cart");
     }
 
+    @Test
+    public void logoutTest() {
+        //add test product to cart
+        catalogPage.logout();
+        loginPage.isPageLoaded();
+    }
+
 }
