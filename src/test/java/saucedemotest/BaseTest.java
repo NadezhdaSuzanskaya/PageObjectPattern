@@ -45,10 +45,10 @@ public class BaseTest {
         checkoutCompletePage = new CheckoutCompletePage(driver);
     }
 
-  //  @AfterClass(alwaysRun=true)
-   // public void teardown() {
-   //     driver.close();
-   //     driver.quit();
-  //  }
+    @AfterClass(alwaysRun=true)
+    public void teardown() {
+        driver.close();
+        driver.quit();
+    }
 
 }
