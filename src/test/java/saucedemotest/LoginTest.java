@@ -34,7 +34,7 @@ public class LoginTest extends BaseTest {
     public void invalidCredentialsLoginTest() {
         openLoginPage();
         loginPage.login(WRONG_USERNAME, WRONG_PASSWORD);
-        Assert.assertEquals(loginPage.getErrorText(),"Epic sadface: Username and password do not match any user in this service",
+        Assert.assertEquals(loginPage.getErrorText(), "Epic sadface: Username and password do not match any user in this service",
                 "The text message when credentials are wrong is not correct");
     }
 
@@ -42,7 +42,7 @@ public class LoginTest extends BaseTest {
     public void requiredUserNameTest() {
         openLoginPage();
         loginPage.loginWithoutUsername(WRONG_PASSWORD);
-        Assert.assertEquals(loginPage.getErrorText(),"Epic sadface: Username is required",
+        Assert.assertEquals(loginPage.getErrorText(), "Epic sadface: Username is required",
                 "The text message when username is absent  is not correct");
     }
 
@@ -50,7 +50,7 @@ public class LoginTest extends BaseTest {
     public void requiredPasswordTest() {
         openLoginPage();
         loginPage.loginWithoutPassword(WRONG_USERNAME);
-        Assert.assertEquals(loginPage.getErrorText(),"Epic sadface: Password is required",
+        Assert.assertEquals(loginPage.getErrorText(), "Epic sadface: Password is required",
                 "The text message when password is absent  is not correct");
     }
 
