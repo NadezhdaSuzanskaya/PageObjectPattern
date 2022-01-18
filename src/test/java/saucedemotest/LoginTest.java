@@ -29,7 +29,7 @@ public class LoginTest extends BaseTest {
                 "Username placeholder is not valid"
         );
     }
-
+// TODO вынести текстовые сообщения в константы
     @Test
     public void invalidCredentialsLoginTest() {
         openLoginPage();

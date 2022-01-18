@@ -44,7 +44,7 @@ public class РurchaseTest extends LoginTest {
     }
 
     private void checkProductInCart(String price, String desc)
-    {
+    { // корзина не пустая, найти list cart_item (количество элементов в нем)
         Assert.assertEquals(cartPage.findProductByNameInCard(TEST_PRODUCT_TITLE),TEST_PRODUCT_TITLE, "Selected product is not in the cart");
         Assert.assertEquals(cartPage.findProductPrice(TEST_PRODUCT_TITLE),price, "The price is not for selected product");
         Assert.assertEquals(cartPage.findProductDesc(TEST_PRODUCT_TITLE), desc,"The dscription is for not selected product");

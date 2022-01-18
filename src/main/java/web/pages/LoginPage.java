@@ -16,7 +16,7 @@ public class LoginPage extends BasePage {
     private static final By USERNAME_TEXT_FIELD = By.id("user-name");
     private static final By PASSWORD_TEXT_FIELD = By.id("password");
     private static final By LOGIN_BUTTON = By.id("login-button");
-    private static final By ERROR_MESSAGE = By.cssSelector("h3");
+    private static final By ERROR_MESSAGE = By.tagName("h3");
 
     public static final String USERNAME_TEXT_FIELD_PLACEHOLDER = "Username";
 
@@ -25,7 +25,7 @@ public class LoginPage extends BasePage {
         driver.findElement(PASSWORD_TEXT_FIELD).sendKeys(password);
         driver.findElement(LOGIN_BUTTON).click();
     }
-
+// TODO объединить логин метод
     public void loginWithoutUsername(String password) {
         driver.findElement(PASSWORD_TEXT_FIELD).sendKeys(password);
         driver.findElement(LOGIN_BUTTON).click();
@@ -39,8 +39,8 @@ public class LoginPage extends BasePage {
     public String getUsernamePlaceholder() {
         return driver.findElement(USERNAME_TEXT_FIELD).getAttribute("placeholder");
     }
+
     public String getErrorText() {
-        System.out.println("dgfdhfh"+driver.findElement(ERROR_MESSAGE).getText());
         return driver.findElement(ERROR_MESSAGE).getText();
     }
 }

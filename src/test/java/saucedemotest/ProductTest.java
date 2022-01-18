@@ -1,9 +1,12 @@
 package saucedemotest;
 
 import org.testng.Assert;
+import org.testng.annotations.BeforeClass;
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
-public class ProductTest extends LoginTest {
+public class ProductTest extends BaseTest {
 
     public static final String TEST_PRODUCT_TITLE = "Test.allTheThings() T-Shirt (Red)";
     public static final String TEST_PRODUCT_TITLE2 = "Sauce Labs Backpack";
@@ -14,8 +17,19 @@ public class ProductTest extends LoginTest {
     private String button_name_after_adding = "REMOVE";
     private String desc = "carry.allTheThings() with the sleek, streamlined Sly Pack that melds uncompromising style with unequaled laptop and tablet protection.";
 
+    @BeforeMethod
+    private void login() {
+        loginPage.open();
+        Assert.assertTrue(loginPage.isPageLoaded(), "Login page is not loaded");
+        loginPage.login(USERNAME, PASSWORD);
+        Assert.assertTrue(catalogPage.isPageLoaded(), "Catalog page is not loaded");
+    }
+
+
+
     @Test
     public void addProductToCartTest() {
+
         //add test product to cart
         catalogPage.addProductToCart(TEST_PRODUCT_TITLE);
         cartPage.open();
