@@ -19,28 +19,29 @@ public class LoginPage extends BasePage {
     private static final By ERROR_MESSAGE = By.tagName("h3");
 
     public static final String USERNAME_TEXT_FIELD_PLACEHOLDER = "Username";
+    public static final String PASSWORD_TEXT_FIELD_PLACEHOLDER = "Password";
 
     public void login(String username, String password) {
         driver.findElement(USERNAME_TEXT_FIELD).sendKeys(username);
         driver.findElement(PASSWORD_TEXT_FIELD).sendKeys(password);
         driver.findElement(LOGIN_BUTTON).click();
     }
-// TODO объединить логин метод
-    public void loginWithoutUsername(String password) {
-        driver.findElement(PASSWORD_TEXT_FIELD).sendKeys(password);
-        driver.findElement(LOGIN_BUTTON).click();
-    }
 
-    public void loginWithoutPassword(String username) {
-        driver.findElement(USERNAME_TEXT_FIELD).sendKeys(username);
-        driver.findElement(LOGIN_BUTTON).click();
-    }
 
     public String getUsernamePlaceholder() {
         return driver.findElement(USERNAME_TEXT_FIELD).getAttribute("placeholder");
     }
 
+    public String getPasswordPlaceholder() {
+        return driver.findElement(PASSWORD_TEXT_FIELD).getAttribute("placeholder");
+    }
+
     public String getErrorText() {
         return driver.findElement(ERROR_MESSAGE).getText();
+    }
+
+    public boolean findLoginButton(){
+        return driver.findElements(LOGIN_BUTTON).isEmpty();
+
     }
 }

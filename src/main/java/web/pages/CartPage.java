@@ -10,6 +10,7 @@ public class CartPage extends BasePage {
     private static final By TITLE_LOCATOR = By.xpath("//span[@class='title' and text()='Your Cart']");
     private static final By PRODUCRT_NAME_LOCATOR = By.className("inventory_item_name");
     private static final By BUTTON_CHECKOUT=By.id("checkout");
+    private static final By BUTTON_CONTINUE_SHOPPING=By.id("continue-shopping");
     private static final String PRODUCT_DESC_LOCATOR ="//div[contains(text(),'%s')]/ancestor::div[@class='cart_item']//div[@class='inventory_item_desc']";
     private static final String PRODUCT_PRICE_LOCATOR ="//div[contains(text(),'%s')]/ancestor::div[@class='cart_item']//div[@class='inventory_item_price']";
 
@@ -35,7 +36,18 @@ public class CartPage extends BasePage {
 
     public void checkout()
     {
+
         driver.findElement(BUTTON_CHECKOUT).click();
+    }
+
+    public void returnToProductsPage()
+    {
+        driver.findElement(BUTTON_CONTINUE_SHOPPING).click();
+    }
+
+    public boolean findContinueShoppingButton(){
+        return driver.findElements(BUTTON_CONTINUE_SHOPPING).isEmpty();
+
     }
 
 }

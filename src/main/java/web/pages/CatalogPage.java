@@ -63,7 +63,9 @@ public class CatalogPage extends BasePage {
 
     public void logout() {
         driver.findElement(MENU_BUTTON).click();
+        //проверить что на выплывающей панеле есть крестик
         driver.findElement(LOGOUT_BUTTON).click();
+        //проверить что открыта неавторизованная страница
     }
 
 }
