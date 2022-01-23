@@ -25,7 +25,7 @@ public class BaseTest {
     public static final String PASSWORD = "secret_sauce";
 
     public static final String WRONG_USERNAME = "user1";
-    public static final String WRONG_PASSWORD = "qwerty";
+    public static final String WRONG_PASSWORD = "qwerty1";
 
     public static final String FIRST_NAME = "FIRST_NAME";
     public static final String LAST_NAME = "LAST_NAME";
@@ -44,7 +44,7 @@ public class BaseTest {
         chromeOptions.addArguments("--ignore-certificate-errors");
 
         driver = new ChromeDriver(chromeOptions);
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(3));
+   //     driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(3));
         loginPage = new LoginPage(driver);
         catalogPage = new CatalogPage(driver);
         cartPage = new CartPage(driver);
@@ -53,10 +53,10 @@ public class BaseTest {
         checkoutCompletePage = new CheckoutCompletePage(driver);
     }
 
- //   @AfterClass(alwaysRun=true)
-  //  public void teardown() {
-  //      driver.close();
-  //      driver.quit();
-  //  }
+    @AfterClass(alwaysRun=true)
+    public void teardown() {
+        driver.close();
+        driver.quit();
+    }
 
 }

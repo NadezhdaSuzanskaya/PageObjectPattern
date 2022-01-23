@@ -22,7 +22,6 @@ public class ProductTest extends BaseTest {
 
     @Test
     public void addProductToCartTest() {
-
         //add test product to cart
         catalogPage.addProductToCart(TEST_PRODUCT_TITLE);
         cartPage.open();
@@ -58,12 +57,11 @@ public class ProductTest extends BaseTest {
     @AfterMethod
     private void removeFromCart() {
         if ((cartPage.findContinueShoppingButton()) && (loginPage.findLoginButton())) {
-            catalogPage.addProductToCart(TEST_PRODUCT_TITLE);
+            catalogPage.returnToOriginalState();
         } else if (loginPage.findLoginButton()) {
             cartPage.returnToProductsPage();
-            catalogPage.addProductToCart(TEST_PRODUCT_TITLE);
+            catalogPage.returnToOriginalState();
         }
-
     }
 }
 
