@@ -1,23 +1,54 @@
 package saucedemotest;
 
 import org.testng.Assert;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import web.pages.LoginPage;
 
 public class LoginTest extends BaseTest {
 
+    public static final String invalidCredential = "Epic sadface: Username and password do not match any user in this service";
+    public static final String requiredUserName = "Epic sadface: Username is required";
+    public static final String requiredUserPassword = "Epic sadface: Password is required";
 
+    @BeforeMethod
     public void openLoginPage() {
         loginPage.open();
         Assert.assertTrue(loginPage.isPageLoaded(), "Login page is not loaded");
     }
 
-    @BeforeMethod
+    @Test
     public void validCredentialsLoginTest() {
         openLoginPage();
         loginPage.login(USERNAME, PASSWORD);
         Assert.assertTrue(catalogPage.isPageLoaded(), "Catalog page is not loaded");
+    }
+
+    @Test
+    public void invalidCredentialsLoginTest() {
+
+        Assert.assertEquals(loginTest(WRONG_USERNAME, WRONG_PASSWORD), invalidCredential,
+                "The text message when credentials are wrong is not correct");
+    }
+
+    @Test
+    public void requiredUserNameTest() {
+        Assert.assertEquals(loginTest(EMPTY_NAME, PASSWORD), requiredUserName,
+                "The text message when username is absent  is not correct");
+    }
+
+    @Test
+    public void requiredPasswordTest() {
+        Assert.assertEquals(loginTest(USERNAME, EMPTY_PASSWORD), requiredUserPassword,
+                "The text message when password is absent  is not correct");
+    }
+
+    @Test
+    private String loginTest(String UserName, String UserPassword) {
+        openLoginPage();
+        loginPage.login(UserName, UserPassword);
+        return loginPage.getErrorText();
     }
 
     @Test
@@ -29,29 +60,17 @@ public class LoginTest extends BaseTest {
                 "Username placeholder is not valid"
         );
     }
-
     @Test
-    public void invalidCredentialsLoginTest() {
+    public void PASSWORD_PLACEHOLDER_TEST() {
         openLoginPage();
-        loginPage.login(WRONG_USERNAME, WRONG_PASSWORD);
-        Assert.assertEquals(loginPage.getErrorText(),"Epic sadface: Username and password do not match any user in this service",
-                "The text message when credentials are wrong is not correct");
+        Assert.assertEquals(
+                loginPage.getPasswordPlaceholder(),
+                LoginPage.PASSWORD_TEXT_FIELD_PLACEHOLDER,
+                "Password placeholder is not valid"
+        );
     }
 
-    @Test
-    public void requiredUserNameTest() {
-        openLoginPage();
-        loginPage.loginWithoutUsername(WRONG_PASSWORD);
-        Assert.assertEquals(loginPage.getErrorText(),"Epic sadface: Username is required",
-                "The text message when username is absent  is not correct");
-    }
 
-    @Test
-    public void requiredPasswordTest() {
-        openLoginPage();
-        loginPage.loginWithoutPassword(WRONG_USERNAME);
-        Assert.assertEquals(loginPage.getErrorText(),"Epic sadface: Password is required",
-                "The text message when password is absent  is not correct");
-    }
+
 
 }

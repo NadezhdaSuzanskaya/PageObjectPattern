@@ -22,6 +22,7 @@ public abstract class BasePage {
     }
 
     public boolean isPageLoaded() {
+        System.out.println("et565474575"+driver.findElement(basePageElementId).isDisplayed());
         return driver.findElement(basePageElementId).isDisplayed();
     }
 
