@@ -46,7 +46,7 @@ public class CatalogPage extends BasePage {
         this.basePageElementId = TITLE_LOCATOR;
     }
 
-    public void addProductToCart(String partialProductTitle) {
+    public void clickProductButton(String partialProductTitle) {
         driver.findElement(By.xpath(String.format(PRODUCT_XPATH_PATTERN, partialProductTitle))).click();
     }
 

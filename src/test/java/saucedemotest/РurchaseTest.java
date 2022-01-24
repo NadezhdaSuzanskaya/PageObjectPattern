@@ -23,7 +23,7 @@ public class РurchaseTest extends BaseTest {
     public void makePurchaseTest() {
         String price = catalogPage.findProductPrice(TEST_PRODUCT_TITLE);
         String desc = catalogPage.findProductDesc(TEST_PRODUCT_TITLE);
-        catalogPage.addProductToCart(TEST_PRODUCT_TITLE);
+        catalogPage.clickProductButton(TEST_PRODUCT_TITLE);
 
         //the page cart
         cartPage.open();
@@ -82,7 +82,7 @@ public class РurchaseTest extends BaseTest {
     @Test
     public void checkCounIconInCartTest() {
         String str1 = "";
-        catalogPage.addProductToCart(TEST_PRODUCT_TITLE);
+        catalogPage.clickProductButton(TEST_PRODUCT_TITLE);
         cartPage.open();
         cartPage.isPageLoaded();
         str1 = Integer.toString(cartPage.ListOfProductsInCart().size());
