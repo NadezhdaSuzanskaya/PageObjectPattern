@@ -23,7 +23,7 @@ public class ProductTest extends BaseTest {
     @Test
     public void addProductToCartTest() {
         //add test product to cart
-        catalogPage.addProductToCart(TEST_PRODUCT_TITLE);
+        catalogPage.clickProductButton(TEST_PRODUCT_TITLE);
         cartPage.open();
         cartPage.isPageLoaded();
         Assert.assertEquals(cartPage.findProductByNameInCard(TEST_PRODUCT_TITLE), TEST_PRODUCT_TITLE, "Selected product is not in the cart");
@@ -43,7 +43,7 @@ public class ProductTest extends BaseTest {
     @Test
     public void checkButtonName() {
         Assert.assertEquals(catalogPage.findProductAddButton(TEST_PRODUCT_TITLE), button_name, "Name of the button on the product isn't correct");
-        catalogPage.addProductToCart(TEST_PRODUCT_TITLE);
+        catalogPage.clickProductButton(TEST_PRODUCT_TITLE);
         Assert.assertEquals(catalogPage.findProductAddButton(TEST_PRODUCT_TITLE), button_name_after_adding, "Name of the button on the product isn't correct");
 
     }
